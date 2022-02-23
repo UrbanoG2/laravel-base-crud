@@ -29,7 +29,7 @@
         </div>
         <div class="mb-3">
           <label for="author" class="form-label">Author</label>
-          <input type="number" class="form-control" id="author" name="author">
+          <input type="text" class="form-control" id="author" name="author">
         </div>
 
         <input class="btn btn-primary" type="submit" value="Invia">

@@ -24,6 +24,7 @@
                             <th>Price</th>
                             <th>Description</th>
                             <th>Author</th>
+                            <th>See more</th>
                         </tr>
                     </thead>
                     <tbody>

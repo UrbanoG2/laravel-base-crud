@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\comics;
+use App\Comic;
 use Illuminate\Http\Request;
 
-class ComicsController extends Controller
+class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,13 @@ class ComicsController extends Controller
      */
     public function index()
     {
-        //
+        $comics = Comic::paginate(15);
+        $data = [
+            'comics' => $comics,
+            'title' => 'comics Home'
+        ];
+
+        return view("comics.index", $data);
     }
 
     /**
@@ -24,7 +30,7 @@ class ComicsController extends Controller
      */
     public function create()
     {
-        //
+        return view('comics.create', ['title' => 'Create New Comic']);
     }
 
     /**
@@ -35,18 +41,28 @@ class ComicsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $comic = new Comic();
+        $comic->fill($data);
+        $comic->save();
+
+
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\comics  $comics
+     * @param  \App\Comic  $comics
      * @return \Illuminate\Http\Response
      */
-    public function show(comics $comics)
+    public function show(Comic $comic)
     {
-        //
+        $data = [
+            'comic' => $comic,
+            'title' => $comic->title
+        ];
+        return view('comics.show', $data);
     }
 
     /**
@@ -55,7 +71,7 @@ class ComicsController extends Controller
      * @param  \App\comics  $comics
      * @return \Illuminate\Http\Response
      */
-    public function edit(comics $comics)
+    public function edit(Comic $comics)
     {
         //
     }
@@ -67,7 +83,7 @@ class ComicsController extends Controller
      * @param  \App\comics  $comics
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comics $comics)
+    public function update(Request $request, Comic $comics)
     {
         //
     }
@@ -78,7 +94,7 @@ class ComicsController extends Controller
      * @param  \App\comics  $comics
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comics $comics)
+    public function destroy(Comic $comics)
     {
         //
     }

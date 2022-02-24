@@ -11,20 +11,22 @@
         </div>
         <div class="row">
             <div class="col">
-                <a href="{{ route('comics.create') }}" class="btn btn-primary">Add new comic</a>
+                <a href="{{ route('comics.create') }}" class="btn btn-warning">Add new comic</a>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                 <table class="table table-primary">
+                 <table class="table table-warning">
                     <thead>
-                        <tr class="table-primary">
+                        <tr class="table-warning">
                             <th>Title</th>
                             <th>Number</th>
                             <th>Price</th>
                             <th>Description</th>
                             <th>Author</th>
                             <th>See more</th>
+                            <th>Edit</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +37,8 @@
                             <td>{{ $comic->price }} €</td>
                             <td>{{ $comic->description }} </td>
                             <td>{{ $comic->author }} </td>
-                            <td><a class="btn btn-primary" href="{{ route('comics.show', $comic) }}">View</a></td>
+                            <td><a class="btn btn-warning" href="{{ route('comics.show', $comic) }}">View</a></td>
+                            <td><a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Edit</a></td>
                         </tr>
                     @endforeach
                     </tbody>

@@ -68,24 +68,27 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\comics  $comics
+     * @param  \App\comics  $comic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comic $comics)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', ['comic'=>$comic]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\comics  $comics
+     * @param  \App\comics  $comic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comics)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $data = $request->all();
+        $updated = $comic->update($data);
+     
+        return redirect()->route('comics.show', $comic->id);
     }
 
     /**

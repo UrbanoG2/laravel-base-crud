@@ -23,7 +23,7 @@ class ComicSeeder extends Seeder
             $newComic->price = $faker->randomFloat(2, 1, 50);
             $newComic->description = $faker->text() ;
             $newComic->author = $faker->name();
-
+            
             $newComic->save();
         }
     }
